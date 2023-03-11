@@ -20,7 +20,10 @@ export const rpc = /* #__PURE__ */ new Proxy<RpcCore>({} as RpcCore, {
             const method = p.toString();
             target[p] = async function (transport, ...params) {
                 const normalizedParams = params.length ? params : undefined;
-                const result = await transport.send(method, normalizedParams);
+                const result = await transport.send<
+                    Parameters<JsonRpcApi[TMethodName]> | undefined,
+                    ReturnType<RpcCore[TMethodName]>
+                >(method, normalizedParams);
                 return result;
             } as RpcCore[TMethodName];
         }
