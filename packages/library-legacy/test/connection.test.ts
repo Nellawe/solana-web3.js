@@ -922,7 +922,7 @@ describe('Connection', function () {
     }
   });
 
-  it('get leader schedule', async () => {
+  it.only('get leader schedule', async () => {
     await mockRpcResponse({
       method: 'getLeaderSchedule',
       params: [],

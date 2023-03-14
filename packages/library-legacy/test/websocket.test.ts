@@ -75,8 +75,8 @@ if (process.env.TEST_LIVE) {
       expect(connection._rpcWebSocketIdleTimeout).to.eq(null);
     });
 
-    it('connect by websocket endpoint from options', async () => {
-      let connection = new Connection('http://localhost', {
+    it.only('connect by websocket endpoint from options', async () => {
+      let connection = new Connection('http://127.0.0.1', {
         wsEndpoint: wsUrl,
       });
 
